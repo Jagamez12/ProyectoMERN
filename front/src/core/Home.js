@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { API } from '../config'
+//import { API } from '../config'
 import NavBar from '../layout/NavBar'
 // import { getPets } from './apiCore'
 import Card from './Card'
@@ -13,7 +13,7 @@ const Home = () => {
         getPets().then(data => {
             setPets(data)
         })*/
-    const getMascota = () => {
+    const getMascota = (e) => {
         fetch(`http://localhost:4000/api/pets/mascotas`)
             .then(res => res.json())
             .then(data => {
@@ -21,16 +21,15 @@ const Home = () => {
                 console.log(pets)
             })
         
+        
     }
     // Otro Cambio
     //getMascota()
-    const componentDidMount = () => {
-        getMascota()
-    }
+    
 
     useEffect(() =>{
-        componentDidMount()
-    })
+        getMascota()    
+    }, [])
     
     //useEffect(() => {
     //    getMascota()
@@ -40,9 +39,7 @@ const Home = () => {
         <div>
             <NavBar></NavBar>
             <div className="container">
-                <div>Esto es solo una prueba
-                    <button >Este boton es una prueba</button>
-                </div>
+                
                 <div className="row">
                     {pets.map((pet, i) => (
                         <div key = {i} className="col-lg-4 col-md-6 col-sm-6" >
