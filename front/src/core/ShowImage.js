@@ -1,5 +1,5 @@
 import './ShowImage.css'
-import {API} from '../config'
+// import {API} from '../config'
 
 
 export default function ShowImage({item, url}) {
