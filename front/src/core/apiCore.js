@@ -3,10 +3,10 @@ import { API } from '../config'
 export const getPets =() => {
     return fetch(  
         `${API}/pets/mascotas`, { method: 'GET'}
-    )
+    ) 
         .then(response => { 
             console.log(response)
-            return response.json() // Aqui hubo un error - PENDIENTE !
+            return response.json()
         })
         .catch(err => console.log(err))
 }
@@ -32,7 +32,37 @@ export const authenticate = (data, next) => {
         next()
     }
 }
+export const signup = user => {
+    return fetch('http://localhost:4000/api/users/signup', { 
+      method: "POST",
+      headers: {
+        Accept: 'application/json',
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(user)
+    })
+      .then(response => {
+        return response.json();
+      })
+      .catch(err => {
+        console.log(err);
+      })
+};
 
+
+export const signout = (next) => {
+    if(!typeof window !== 'undefined'){
+        localStorage.removeItem('jwt')
+        next()
+        return fetch('http://localhost:4000/api/users/signout', {
+            method: 'POST',
+        })
+            .then(response => {
+                console.log('signout', response)
+            })
+            .catch( err => console.log(err))
+    }
+}
 export const isAuthenticated = () => {
     if(typeof window == 'undefined'){
         return false

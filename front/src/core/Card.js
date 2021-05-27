@@ -9,8 +9,8 @@ export default function Card({pet}) {
     return (
         <div className = "card m-10 card-cont">
             <div>
-                <ShowImage className = "img" item={pet} url="pets"/>
                 <h2>{pet.name}</h2>
+                <ShowImage className = "img" item={pet} url="pets"/>
                 <p> {pet.raza} </p>
                 <p> {pet.especie} </p>
             </div>

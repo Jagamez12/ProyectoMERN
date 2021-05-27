@@ -1,6 +1,17 @@
+import React from 'react'
 import { NavBar as Navi, NavItem} from 'reactstrap'
-import { Link} from 'react-router-dom'
-export default function NavBar() {
+import { Link, withRouter } from 'react-router-dom'
+import { isAuthenticated, signout } from '../core/apiCore'
+
+
+const isActive = (history, path) => {
+    if (history.location.pathname === path) {
+      return {color: '#ff9900'}
+    } else {
+      return {color: '#ffffff'}
+    }
+  }
+const NavBar = ({history}) => {
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -17,32 +28,44 @@ export default function NavBar() {
                     <NavItem className="nav-link">
                         <Link to="/" className="nav-link">Inicio</Link>
                     </NavItem>
-                    <NavItem className="nav-link">
-                        <Link to="/signup" className="nav-link">Signup</Link>
-                    </NavItem>
-                    <NavItem className="nav-link">
-                        <Link to="/signin" className="nav-link">Signin</Link>
-                    </NavItem>
-                                        
                 </ul>
-                <div>
+                <ul className = "navbar-nav">
+                    {
+                        !isAuthenticated() && (
+                            <>
+                                <NavItem className="nav-link">
+                                    <Link to="/signup" className="nav-link">Signup</Link>
+                                </NavItem>
+                                <NavItem className="nav-link">
+                                    <Link to="/signin" className="nav-link">Signin</Link>
+                                </NavItem>
                     
-                <ul className="navbar-nav">
-                <li className="nav-item">
-                        <a className="nav-link" href="/">Profile</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="/">Login</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="/">Logout</a>
-                    </li>
+                            </>        
+                        )
+                    }
+                    {
+                        isAuthenticated() && (
+                            <>
+                                <NavItem className="nav-link">
+                                    <Link to="/" className="nav-link">Profile</Link>
+                                </NavItem>
+                                <NavItem className="nav-link">
+                                    <Link to="/" className="nav-link" 
+                                    onClick={() => signout(() => { 
+                                        history.push("/")
+                                    })}>Logout</Link>
+                                </NavItem>
+                            
+                            </>
+                        )
+                    }
                 </ul>
-                </div>
-                </div>
-            
+          
+            </div>
             </div>
             </nav>
         </div>
     )
 }
+
+export default withRouter(NavBar)

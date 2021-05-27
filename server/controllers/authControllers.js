@@ -9,7 +9,7 @@ exports.signup = (req, res) => {
     const user = new User(req.body)
     user.save((error, user) => {
         if (error) {
-            res.json({status: 'Algo salio mal'})
+            return res.status(400).json({error: 'Hubo un error en esta monda'})
         }
         user.salt = undefined
         user.hashed_password = undefined
@@ -19,13 +19,13 @@ exports.signup = (req, res) => {
 
 exports.signin = (req, res) => {
     const {email, password} = req.body
-    User.findOne({email}, (err, user) => {
-        if (err || !user) {
-            res.json({status: 'Esto salio mal o el usuario no existe'})
+    User.findOne({email}, (error, user) => {
+        if (error || !user) {
+            return res.status(400).json({error: 'Email Inexistente'})
         }
 
         if(!user.authenticate(password)){
-            res.json({status: 'Email and password dont match'})
+            return res.status(401).json({error: 'Contraseña incorrecta'})
         }
 
         const token = jwt.sign({_id:user._id}, process.env.JWT_SECRET)
@@ -38,4 +38,8 @@ exports.signin = (req, res) => {
 }
 
 
-// Sign up 
+// Sign up  asdasd
+exports.signout = (req, res) => {
+    res.clearCookie('t')
+    res.json({message: "Signout success"})
+}

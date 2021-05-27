@@ -26,8 +26,8 @@ export default function Signin() {
         setValues({...values, error: false, loading: false})
         signin({email, password})
             .then(data => {
-                if(data.err){
-                    setValues({...values, error: data.err, loading:false})
+                if(data.error){
+                    setValues({...values, error: data.error, loading:false})
                 } else {
                     authenticate(data, () => {
                         setValues({...values, redirectToReferrer: true})
@@ -45,15 +45,14 @@ export default function Signin() {
                 return <Redirect to ="/"/>
 
             }
-            
-            if(isAuthenticated()){
-                return <Redirect to ="/"/>
-            }
-                
+                            
+        }
+        if(isAuthenticated()){
+            return <Redirect to ="/"/>
         }
     }
     const showError = () => {
-            <div className= "alert alert-danger" >
+            <div className= "alert alert-danget" style={{display: error ? '': 'none'}} >
                 {error}
             </div>
         
@@ -89,9 +88,10 @@ export default function Signin() {
         <div>
             <NavBar></NavBar>
             <h4 className = "text-center mb-4">Login</h4>
-            {showError()}
-            {showLoading}
+            
             {signUpForm()}
+            {showError()}
+            {showLoading()}
             {redirectUser()}
             
         </div>
