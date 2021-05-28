@@ -2,7 +2,7 @@ import React from 'react'
 import { NavBar as Navi, NavItem} from 'reactstrap'
 import { Link, withRouter } from 'react-router-dom'
 import { isAuthenticated, signout } from '../core/apiCore'
-
+import './NavBar.css'
 
 const isActive = (history, path) => {
     if (history.location.pathname === path) {
@@ -14,7 +14,7 @@ const isActive = (history, path) => {
 const NavBar = ({history}) => {
     return (
         <div>
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+            <nav className="navbar navbar-expand-lg  nav-ui">
             <div className="container">
                 
             
@@ -29,7 +29,7 @@ const NavBar = ({history}) => {
                         <Link to="/" className="nav-link">Inicio</Link>
                     </NavItem>
                 </ul>
-                <ul className = "navbar-nav">
+                <ul className = "navbar-nav navi-ui">
                     {
                         !isAuthenticated() && (
                             <>

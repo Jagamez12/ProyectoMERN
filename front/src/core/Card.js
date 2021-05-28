@@ -13,6 +13,7 @@ export default function Card({pet}) {
                 <ShowImage className = "img" item={pet} url="pets"/>
                 <p> {pet.raza} </p>
                 <p> {pet.especie} </p>
+                <button className = "btn btn-success"></button>
             </div>
         </div>
     )

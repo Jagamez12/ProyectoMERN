@@ -4,7 +4,10 @@ const _ = require('lodash')
 const fs = require('fs')
 
 
-
+exports.verMas = (req, res) => {
+    req.pets.foto = undefined
+    return res.json(req.pets)
+}
 
 exports.createPets = (req, res) => {
     let form = new formidable.IncomingForm()
@@ -38,7 +41,7 @@ exports.getPets = (req, res) => {
 
     Pets.find()
         .select("-foto")
-        .populate("category")
+        .populate("categoru")
         .sort([[sortBy, orden]])
         .exec((err, pets) => {
             if(err){

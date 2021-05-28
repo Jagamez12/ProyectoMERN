@@ -66,6 +66,8 @@ export default function Signin() {
     }
 
     const signUpForm = () => (
+        <div className = "divis">
+
         <form className = "sign-box mt-5">
             
             <div className="form-group">
@@ -83,6 +85,7 @@ export default function Signin() {
             <button  className = 'btn btn-primary'
             onClick ={clicklSubmit} >Login</button>
         </form>
+            </div>
     )
     return (
         <div>
