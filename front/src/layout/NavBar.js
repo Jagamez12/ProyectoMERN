@@ -47,6 +47,12 @@ const NavBar = ({history}) => {
                         isAuthenticated() && (
                             <>
                                 <NavItem className="nav-link">
+                                    <Link to="/addPets" className="nav-link">Añadir Mascota</Link>
+                                </NavItem>
+                                <NavItem className="nav-link">
+                                    <Link to="/addCategory" className="nav-link">Añadir Categoria</Link>
+                                </NavItem>
+                                <NavItem className="nav-link">
                                     <Link to="/" className="nav-link">Profile</Link>
                                 </NavItem>
                                 <NavItem className="nav-link">

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './Card.css'
 import ShowImage from './ShowImage'
+import { Link } from 'react-router-dom'
 
 export default function Card({pet}) {
     const [count, setCount] = useState(pet.count)
@@ -13,7 +14,9 @@ export default function Card({pet}) {
                 <ShowImage className = "img" item={pet} url="pets"/>
                 <p> {pet.raza} </p>
                 <p> {pet.especie} </p>
-                <button className = "btn btn-success"></button>
+                <Link to = {`/pets/${pet._id}`}>
+                    <button className = "btn btn-success">Ver Mas</button>
+                </Link>
             </div>
         </div>
     )

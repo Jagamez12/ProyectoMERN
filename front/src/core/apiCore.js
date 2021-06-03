@@ -1,5 +1,19 @@
 import { API } from '../config'
 
+export const read = (petsId) => {
+    return fetch(
+        `http://localhost:4000/api/pets/${petsId}`, 
+        {
+            method: 'GET'
+        })
+            .then(response => {
+                console.log(response)
+                return response.json()
+            })
+            .catch(err => console.log(err))
+    
+}
+
 export const getPets =() => {
     return fetch(  
         `${API}/pets/mascotas`, { method: 'GET'}
@@ -49,7 +63,6 @@ export const signup = user => {
       })
 };
 
-
 export const signout = (next) => {
     if(!typeof window !== 'undefined'){
         localStorage.removeItem('jwt')
@@ -72,4 +85,31 @@ export const isAuthenticated = () => {
     }else {
         return false
     }
+}
+
+export const createCategory = (userId, token, category) => {
+    return fetch(`http://localhost:4000/api/category/create/${userId}`,
+    {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify(category)
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(err => console.log(err))
+}
+
+export const getCategories = () => {
+    return fetch(`http://localhost:4000/api/category/categories`, {
+        method: 'GET'
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(err => console.log(err))
 }

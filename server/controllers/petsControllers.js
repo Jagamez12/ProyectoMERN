@@ -41,11 +41,11 @@ exports.getPets = (req, res) => {
 
     Pets.find()
         .select("-foto")
-        .populate("categoru")
+        .populate("Category")
         .sort([[sortBy, orden]])
         .exec((err, pets) => {
             if(err){
-                res.json({status: "Esta monda no funciono eche pa sabe porque"})
+                res.json({status: "Ocurrio un error"})
             
             }
 

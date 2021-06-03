@@ -37,7 +37,17 @@ exports.signin = (req, res) => {
     })
 }
 
-
+exports.userById = (req, res, next, id) => {
+    User.findById(id).exec((err, user) => {
+        if(err || !user){
+            return res.status(400).json({ 
+                error: "Algo Ocurrio mal :C"
+            })
+        }
+        req.profile = user
+        next()
+    })
+}
 // Sign up  asdasd
 exports.signout = (req, res) => {
     res.clearCookie('t')

@@ -1,5 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import AddCategory from './core/AddCategory'
+import AddPets from './core/AddPets'
 import Home from './core/Home'
 import Pets from './core/Pets'
 import Search from './core/Search'
@@ -15,6 +17,8 @@ const Routes = () => {
                 <Route path="/signin" exact component={Signin}/>
                 <Route path="/signup" exact component={Signup}/>
                 <Route path="/Search" exact component={Search}/>
+                <Route path="/addCategory" exact component={AddCategory}/>
+                <Route path="/addPets" exact component={AddPets}/>
             </Switch>
         </BrowserRouter>
     )
