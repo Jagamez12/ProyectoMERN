@@ -41,7 +41,7 @@ exports.getPets = (req, res) => {
 
     Pets.find()
         .select("-foto")
-        .populate("Category")
+        .populate('Category') 
         .sort([[sortBy, orden]])
         .exec((err, pets) => {
             if(err){
@@ -66,7 +66,7 @@ exports.deletePet = async(req, res) => {
 }
 exports.petsById = (req, res, next, id) => {
     Pets.findById(id)
-        .populate("category")
+        .populate('Category')
         .exec((err, pets) => {
             if(err || !pets){
                 res.json({ status: "No funciono o no encontro nada"})

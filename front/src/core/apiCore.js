@@ -1,4 +1,5 @@
 import { API } from '../config'
+import { Redirect } from 'react-router-dom'
 
 export const read = (petsId) => {
     return fetch(
@@ -112,4 +113,26 @@ export const getCategories = () => {
             return response.json()
         })
         .catch(err => console.log(err))
+}
+
+export const createPet = (userId, token, product) => {
+    return fetch(`http://localhost:4000/api/pets/createPets/${userId}`,{
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            Authorization: `Bearer ${token}`
+        },
+        body: product
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(err => console.log(err))
+        
+}
+
+export const redirected = (next) => {
+    if(!isAuthenticated()) {
+        return <Redirect to ="/signin"/>
+    } 
 }

@@ -14,7 +14,7 @@ const isActive = (history, path) => {
 const NavBar = ({history}) => {
     return (
         <div>
-            <nav className="navbar navbar-expand-lg  nav-ui">
+            <nav className="navbar navbar-expand-lg navbar-red">
             <div className="container">
                 
             
@@ -53,7 +53,7 @@ const NavBar = ({history}) => {
                                     <Link to="/addCategory" className="nav-link">Añadir Categoria</Link>
                                 </NavItem>
                                 <NavItem className="nav-link">
-                                    <Link to="/" className="nav-link">Profile</Link>
+                                    <Link to="/perfil" className="nav-link">Profile</Link>
                                 </NavItem>
                                 <NavItem className="nav-link">
                                     <Link to="/" className="nav-link" 

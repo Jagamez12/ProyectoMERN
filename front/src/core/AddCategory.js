@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import NavBar from '../layout/NavBar'
-import { createCategory, isAuthenticated } from './apiCore'
+import { createCategory, isAuthenticated, redirected } from './apiCore'
 
 const AddCategory = () => {
     const [name, setName] = useState('')
@@ -49,7 +49,7 @@ const AddCategory = () => {
     )
 
     const newCategoria = () =>(
-
+        
         <form onSubmit={clickSubmit} >
             <div className = "form-group">
                 <label className = "text-muted">Nombre</label>
@@ -63,6 +63,7 @@ const AddCategory = () => {
 
     return( 
         <>
+        {redirected()}
         <NavBar></NavBar>
         <div className="mt-5 container">
 

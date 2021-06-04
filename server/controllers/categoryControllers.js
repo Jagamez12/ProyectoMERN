@@ -6,7 +6,7 @@ exports.create = async(req, res) => {
     res.json({ status: "Category Saved" })
 }
 
-
+ 
 exports.list = (req, res) => {
     Category.find().exec((err, data) => {
         if (err) {
