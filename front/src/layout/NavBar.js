@@ -11,9 +11,14 @@ const isActive = (history, path) => {
       return {color: '#ffffff'}
     }
   }
+
+
 const NavBar = ({history}) => {
+
+    const {user, token} = isAuthenticated()
+
     return (
-        <div>
+        <div className = "nav-uis">
             <nav className="navbar navbar-expand-lg navbar-red">
             <div className="container">
                 
@@ -33,12 +38,15 @@ const NavBar = ({history}) => {
                     {
                         !isAuthenticated() && (
                             <>
+                                <div className="navto">
+
                                 <NavItem className="nav-link">
-                                    <Link to="/signup" className="nav-link">Signup</Link>
+                                    <Link to="/signup" className="nav-link">Registrarse</Link>
                                 </NavItem>
                                 <NavItem className="nav-link">
-                                    <Link to="/signin" className="nav-link">Signin</Link>
+                                    <Link to="/signin" className="nav-link">Entrar</Link>
                                 </NavItem>
+                                </div>
                     
                             </>        
                         )
@@ -52,15 +60,18 @@ const NavBar = ({history}) => {
                                 <NavItem className="nav-link">
                                     <Link to="/addCategory" className="nav-link">Añadir Categoria</Link>
                                 </NavItem>
+                                <div className="navto">
+
                                 <NavItem className="nav-link">
-                                    <Link to="/perfil" className="nav-link">Profile</Link>
+                                    <Link to="/perfil" className="nav-link">Perfil de {user.name}</Link>
                                 </NavItem>
                                 <NavItem className="nav-link">
                                     <Link to="/" className="nav-link" 
                                     onClick={() => signout(() => { 
                                         history.push("/")
-                                    })}>Logout</Link>
+                                    })}>Salir</Link>
                                 </NavItem>
+                                    </div>
                             
                             </>
                         )

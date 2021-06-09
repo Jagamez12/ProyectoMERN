@@ -1,14 +1,23 @@
 import React from 'react'
 import NavBar from '../layout/NavBar'
-import { redirected } from './apiCore'
-
+import { isAuthenticated, redirected } from './apiCore'
+import './Profile.css'
 
 const Profile = ()  => {
+
+    const {user, token} = isAuthenticated()
     return (
         <>
         {redirected()}
         <NavBar/>
-        <h2>Hola Mundo</h2>
+        <div className="contenedor">
+            <div className="userpets">
+                <h3>Aqui van las mascotas</h3>
+            </div>
+            <div className="profile">
+                Aqui va el Perfil 
+            </div>
+        </div>
         </>
     )
 }

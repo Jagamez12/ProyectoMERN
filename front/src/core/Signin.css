@@ -1,0 +1,51 @@
+.sign-box {
+    width: 400px!important;
+    height: 100%!important;
+    display: inline-block;
+    position: relative;
+    left: 10%;
+    
+    border:none!important;
+    background-color:white !important;
+    border-radius: 0%!important;
+}
+
+.divis2{
+    background-color:purple;
+    width: 30%;
+    height: 100%;
+    position: relative;
+    left: 68.4%;
+}
+.sign-box input{
+    margin: auto;
+}
+.btn-primary{
+    text-align: center !important;
+    margin: 0 auto!important;
+}
+
+.s-btn {
+    text-align: center !important;
+    margin: 0 auto;
+}
+
+.divis {
+    background-color: red   ;
+    width: 89%;
+    max-width: 1400px;
+    height: 800px;
+    margin: auto;
+}
+body {
+    background-color:whitesmoke;
+}
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.form-control{
+    border: none;
+    border-bottom: 1px solid ;
+}

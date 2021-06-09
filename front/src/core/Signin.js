@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import NavBar from '../layout/NavBar'
-import './Signup.css'
+import './Signin.css'
 import { authenticate, signin, isAuthenticated } from './apiCore'
 import { Redirect } from 'react-router'
 
@@ -67,8 +67,9 @@ export default function Signin() {
 
     const signUpForm = () => (
         <div className = "divis">
+        <div className="divis2">
 
-        <form className = "sign-box mt-5">
+        <form className = "sign-box">
             
             <div className="form-group">
                 <label className="text-muted">email</label>
@@ -86,11 +87,12 @@ export default function Signin() {
             onClick ={clicklSubmit} >Login</button>
         </form>
             </div>
+            </div>
     )
     return (
         <div>
             <NavBar></NavBar>
-            <h4 className = "text-center mb-4">Login</h4>
+            
             
             {signUpForm()}
             {showError()}

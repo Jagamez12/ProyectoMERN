@@ -15,7 +15,7 @@ exports.list = (req, res) => {
         res.json(data)
     })
 }
- exports.remove = (req, res) => {
+exports.remove = (req, res) => {
     let category = req.category
     category.remove((err, data) => {
         if(err) {
@@ -25,7 +25,6 @@ exports.list = (req, res) => {
         res.json({ status: "Se removio exitosamente"})
     })
 }
-
 exports.categoryById = (req, res, next, id) => {
     Category.findById(id).exec((err, category) => {
         if (err || !category) {

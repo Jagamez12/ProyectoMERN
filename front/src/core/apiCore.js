@@ -14,7 +14,6 @@ export const read = (petsId) => {
             .catch(err => console.log(err))
     
 }
-
 export const getPets =() => {
     return fetch(  
         `${API}/pets/mascotas`, { method: 'GET'}
@@ -63,7 +62,6 @@ export const signup = user => {
         console.log(err);
       })
 };
-
 export const signout = (next) => {
     if(!typeof window !== 'undefined'){
         localStorage.removeItem('jwt')
@@ -87,7 +85,6 @@ export const isAuthenticated = () => {
         return false
     }
 }
-
 export const createCategory = (userId, token, category) => {
     return fetch(`http://localhost:4000/api/category/create/${userId}`,
     {
@@ -104,7 +101,6 @@ export const createCategory = (userId, token, category) => {
         })
         .catch(err => console.log(err))
 }
-
 export const getCategories = () => {
     return fetch(`http://localhost:4000/api/category/categories`, {
         method: 'GET'
@@ -114,7 +110,6 @@ export const getCategories = () => {
         })
         .catch(err => console.log(err))
 }
-
 export const createPet = (userId, token, product) => {
     return fetch(`http://localhost:4000/api/pets/createPets/${userId}`,{
         method: 'POST',
@@ -130,7 +125,6 @@ export const createPet = (userId, token, product) => {
         .catch(err => console.log(err))
         
 }
-
 export const redirected = (next) => {
     if(!isAuthenticated()) {
         return <Redirect to ="/signin"/>

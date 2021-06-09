@@ -30,9 +30,8 @@ mongoose.connect(process.env.DATABASE, {
 app.use('/api/category', require('./routes/category'))
 app.use('/api/pets', require('./routes/pets'))
 app.use('/api/users', require('./routes/auth'))
-/*app.get('/', (req, res) => {
-    res.send("El Servidor esta funcionando")
-}) */
+app.use('/api/adopted', require('./routes/adopted'))
+
 
 
 

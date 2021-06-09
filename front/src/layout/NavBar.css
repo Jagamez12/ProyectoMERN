@@ -2,8 +2,13 @@
     border-bottom: 12px gray;
     color:white;
 }
-.navi-ui{
+.navi-uis{
     color: black;
     position: relative;
+    background-color: white;
     
+}
+.navto {
+    display: inline-flex;
+    margin-right: 0px;
 }

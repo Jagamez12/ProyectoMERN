@@ -13,6 +13,11 @@ const petSchema = new mongoose.Schema({
         type: Number,
         require: true
     },
+    description: {
+        type: String,
+        default: 'no hay descripcion'
+    }
+    ,
     especie: {
         type: ObjectId,
         ref: "Category",
@@ -26,6 +31,14 @@ const petSchema = new mongoose.Schema({
         type: String,
         maxlength: 20,
         default: 'Desconocido'
+    },
+    estado: {
+        type: String,
+        default: 'Active'
+    },
+    descriptionState: {
+        type: String,
+        default: 'No hay cambios de estado'
     },
     foto: {
         data: Buffer,

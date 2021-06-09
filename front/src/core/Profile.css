@@ -1,0 +1,18 @@
+.contenedor {
+    
+    margin: 3px auto;
+    width: 90%;
+    height: 100%;
+}
+.profile {
+    background-color: antiquewhite;
+    display: inline-block;
+    width: 40%;
+    height: 80%;
+}
+.userpets {
+    width: 60%;
+    height: 100%;
+    display: inline-block;
+    background-color: aquamarine;
+}
