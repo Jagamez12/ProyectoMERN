@@ -32,6 +32,7 @@ const AdoptedPet = new mongoose.Schema({
   nameOwner: {
     type: String,
     require: true,
+    default: 'nadie es el dueño',
     unique: true,
   },
 });

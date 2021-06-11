@@ -43,6 +43,10 @@ const petSchema = new mongoose.Schema({
     foto: {
         data: Buffer,
         contentType: String
+    },
+    nameOwner: {
+        type: String,
+        
     }
 }, {
     timestamps: true

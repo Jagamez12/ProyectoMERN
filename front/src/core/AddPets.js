@@ -47,7 +47,7 @@ const AddPets = () => {
     useEffect(()=> {
         setValues({...values, formData: new FormData()})
         init()
-    }, [])
+    }, [])        
 
 
     const handleChange = name => e => {

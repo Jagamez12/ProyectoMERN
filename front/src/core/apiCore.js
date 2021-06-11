@@ -61,7 +61,7 @@ export const signup = user => {
       .catch(err => {
         console.log(err);
       })
-};
+}
 export const signout = (next) => {
     if(!typeof window !== 'undefined'){
         localStorage.removeItem('jwt')
@@ -129,4 +129,20 @@ export const redirected = (next) => {
     if(!isAuthenticated()) {
         return <Redirect to ="/signin"/>
     } 
+}
+export const Adoptar = (userId, token, product) => {
+    return fetch(`http://localhost:4000/api/adopted/createAdopted/${userId}`,{
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            Authorization: `Bearer ${token}`
+        },
+        body: product
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(err => console.log(err))
+        
+
 }

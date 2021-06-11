@@ -7,12 +7,7 @@ import Card from './Card'
 const Home = () => {
 
     const [pets, setPets] = useState([])
-    // const [error, setError] = useState(false)
-
-    /*const loadPets = () => {
-        getPets().then(data => {
-            setPets(data)
-        })*/
+   
     const getMascota = (e) => {
         fetch(`http://localhost:4000/api/pets/mascotas`)
             .then(res => res.json())
@@ -23,18 +18,14 @@ const Home = () => {
         
         
     }
-    // Otro Cambio
-    //getMascota()
+    
     
 
     useEffect(() =>{
         getMascota()    
     }, [])
     
-    //useEffect(() => {
-    //    getMascota()
-    //})
-    // onClick={() => componentDidMount()}
+    
     return (
         <div>
             <NavBar></NavBar>
