@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
+import { Redirect } from 'react-router'
 import NavBar from '../layout/NavBar'
-import { Adoptar, isAuthenticated, read } from './apiCore'
+import { Adoptar, deletePet, isAuthenticated, read } from './apiCore'
 import Card from './Card'
 
 
@@ -9,7 +10,23 @@ const Pets = (props) => {
     const {user, token} = isAuthenticated()
     const [pets, setPets] = useState({})
     const [error, setError] = useState(false)
-    const [adopt, setAdopt] = useState({})
+    const [adopt, setAdopt] = useState({
+            namePet: '',
+            edadPet: '',
+            especie: '',
+            genero: '',
+            raza: '',
+            nameUser: '',
+            nameOwner: ''
+    })
+    const {
+        namePet,
+        edadPet,
+        especie,
+        genero,
+        raza,
+        nameUser,
+        nameOwner} = adopt
     const loadPets = petsId => {
         read(petsId)
             .then(data => {
@@ -22,7 +39,7 @@ const Pets = (props) => {
     }
     const adoptar = event => {
         //event.preventDefault()
-        const data = {
+        setAdopt({
             namePet: pets.name,
             edadPet: pets.edad,
             especie: pets.especie,
@@ -31,10 +48,16 @@ const Pets = (props) => {
             nameUser: user.name,
             nameOwner: pets.nameOwner
 
-        }
-        Adoptar(user._id, token, data)
+        })
+        Adoptar(user._id, token, adopt)
 
 
+    
+    }
+    const deleteIt = event => {
+        event.preventDefault()
+        deletePet(pets._id)
+        
     }
     useEffect(() => {
         const petsId = props.match.params.petsId
@@ -54,8 +77,10 @@ const Pets = (props) => {
                     <h4>{pets.especie}</h4>
                     <h4>{pets.genero}</h4>
                     <h4>{pets.raza}</h4>
+                    <h4>{user.name}</h4>
                     <h4>{pets.nameOwner}</h4>
                     <button onClick={() => {adoptar()}}>Adoptar</button>
+                    <button conClick={deleteIt}>Borrar</button>
                     </>
                     
                 }

@@ -70,7 +70,7 @@ export default function Signin() {
         <div className="divis2">
 
         <form className = "sign-box">
-            
+            <h3>Login</h3>
             <div className="form-group">
                 <label className="text-muted">email</label>
                 <input type="email" className="form-control"

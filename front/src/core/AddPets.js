@@ -15,6 +15,7 @@ const AddPets = () => {
         foto: '',
         loading: false,
         error: '',
+        nameOwner: '',
         createdPet: '',
         redirectToProfile: false,
         formData: ''
@@ -31,6 +32,7 @@ const AddPets = () => {
         loading,
         error,
         createdPet,
+        nameOwner,
         redirectToProfile,
         formData
     } = values
@@ -52,6 +54,7 @@ const AddPets = () => {
 
     const handleChange = name => e => {
         const value = name === 'foto' ? e.target.files[0] : e.target.value
+        
         formData.set(name, value)
         setValues({...values, [name]: value})
     }
@@ -143,6 +146,7 @@ const AddPets = () => {
     )
     const clickSubmit = event => {
         event.preventDefault()
+        formData.set({nameOwner: user.name})
         setValues({ ...values, error: '', loading: true })
         createPet(user._id, token, formData).then(data => {
           if (data.error) {
@@ -154,6 +158,7 @@ const AddPets = () => {
               edad: '',
               foto: '',
               genero: '',
+              nameOwner: '',
               raza: '',
               loading: false,
               createdPet: data.name

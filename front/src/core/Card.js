@@ -29,7 +29,7 @@ export default function Cards({pet}) {
               <CardBody>
                 <CardTitle tag="h5">{pet.name}</CardTitle>
                 <CardSubtitle tag="h6" className="mb-2 text-muted">{pet.genero}</CardSubtitle>
-                <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
+                <CardText>{pet.description}</CardText>
                 <Link to = {`/pets/${pet._id}`}>
 
                 <Button>Ver Mas</Button>

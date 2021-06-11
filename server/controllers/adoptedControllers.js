@@ -1,7 +1,22 @@
 const Adopted = require('../models/Adopted')
 
 exports.Adopted = async(req, res) => {
-    const  adopted = new Adopted(req.body)
+    const {
+        namePet,
+        edadPet,
+        especie,
+        genero,
+        raza,
+        nameUser,
+        nameOwner} = req.body
+    const  adopted = new Adopted({
+        namePet,
+        edadPet,
+        especie,
+        genero,
+        raza,
+        nameUser,
+        nameOwner})
     await adopted.save()
     res.json({status: 'Saved'})
 }

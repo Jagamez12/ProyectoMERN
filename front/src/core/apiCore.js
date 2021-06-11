@@ -137,7 +137,7 @@ export const Adoptar = (userId, token, product) => {
             Accept: 'application/json',
             Authorization: `Bearer ${token}`
         },
-        body: product
+        body: JSON.stringify(product)
     })
         .then(response => {
             return response.json()
@@ -145,4 +145,14 @@ export const Adoptar = (userId, token, product) => {
         .catch(err => console.log(err))
         
 
+}
+export const deletePet = (id) => {
+    return fetch(`http://localhost:4000/api/pets/createPets/${id}`,{ 
+        method: 'DELETE',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+        }
+        
+    })
 }

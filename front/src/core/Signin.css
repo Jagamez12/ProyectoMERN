@@ -1,24 +1,26 @@
 .sign-box {
     width: 400px!important;
-    height: 100%!important;
+    
     display: inline-block;
     position: relative;
-    left: 10%;
-    
+    text-align: center;
+    top: 180px;
     border:none!important;
     background-color:white !important;
     border-radius: 0%!important;
 }
 
 .divis2{
-    background-color:purple;
-    width: 30%;
+    background-color:white;
+    width: 30%;    
     height: 100%;
     position: relative;
-    left: 68.4%;
+    left: 70%;
+    
 }
 .sign-box input{
     margin: auto;
+    margin-bottom: 10px;
 }
 .btn-primary{
     text-align: center !important;
@@ -31,7 +33,7 @@
 }
 
 .divis {
-    background-color: red   ;
+    background-color:aqua;    ;
     width: 89%;
     max-width: 1400px;
     height: 800px;
@@ -47,5 +49,6 @@ body {
 }
 .form-control{
     border: none;
-    border-bottom: 1px solid ;
+    border-bottom: 1px solid aqua;
+
 }
