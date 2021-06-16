@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Redirect } from 'react-router'
 import NavBar from '../layout/NavBar'
 import { Adoptar, deletePet, isAuthenticated, read } from './apiCore'
-import Card from './Card'
+import './Pets.css'
 
 
 const Pets = (props) => {
@@ -51,7 +51,16 @@ const Pets = (props) => {
         })
         console.log(adopt)
         Adoptar(user._id, token, adopt)
+        setAdopt({
+            namePet: '',
+            edadPet: '',
+            especie: '',
+            genero: '',
+            raza: '',
+            nameUser: '',
+            nameOwner: ''
 
+        })
 
     
     }
@@ -69,20 +78,19 @@ const Pets = (props) => {
     return(
         <>
             <NavBar></NavBar>
-            <div className = "container">
+            <div className = "container" style={{
+        backgroundColor: 'white', margin: 'auto'}}>
                 {
                     pets &&
                     <>
-                    <Card pet={pets}/>
-                    <h4>{pets.name}</h4>
-                    <h4>{pets.edad}</h4>
-                    <h4>{pets.especie}</h4>
-                    <h4>{pets.genero}</h4>
-                    <h4>{pets.raza}</h4>
-                    <h4>{user._id}</h4>
-                    <h4>{pets.nameOwner}</h4>
-                    <button onClick={() => {adoptar()}}>Adoptar</button>
-                    <button onClick={() => deleteIt()}>Borrar</button>
+                    <div className = "Arriba">
+                        <img src={`http://localhost:4000/api/pets/foto/${pets._id}`} 
+                        height = "300px"
+                        width = "300px"
+                        style = {{borderRadius: '50%', marginRight: '60px'}}
+                        alt={pets.name} className="imagenProfile"/>
+                        <h1 style={{ display: 'inline'}}>{pets.name}</h1>
+                    </div>
                     </>
                     
                 }

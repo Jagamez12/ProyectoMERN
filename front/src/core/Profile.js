@@ -27,13 +27,22 @@ const Profile = ()  => {
             <div className="userpets">
                 <h3>Mis Mascotas</h3>
                 {
-                    pets.map((pet, id) => {
-                        if(pets.nameOwner === user.name)(
+                    /*pets.map((pet, id) => {
+                        if(pets.nameOwner == user.name)(
                             <div>
                                 <Cards pet={pet}/>
                             </div>
                         )
-                    })
+                    })*/
+                    pets.map((pet, id) =>(
+                        <div key = {id} >
+                            {
+                                pet.nameOwner === user.name && (
+                                    <Cards pet={pet}/>
+                                )
+                            }
+                        </div>
+                    ))
                 }
 
             </div>

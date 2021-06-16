@@ -12,6 +12,7 @@ const AddPets = () => {
         especie: '',
         genero: '',
         raza: '',
+        description: '',
         foto: '',
         loading: false,
         error: '',
@@ -28,6 +29,7 @@ const AddPets = () => {
         especie,
         genero,
         raza,
+        description,
         foto,
         loading,
         error,
@@ -54,7 +56,7 @@ const AddPets = () => {
 
     const handleChange = name => e => {
         const value = name === 'foto' ? e.target.files[0] : e.target.value
-        
+        console.log(value)
         formData.set(name, value)
         setValues({...values, [name]: value})
     }
@@ -109,12 +111,14 @@ const AddPets = () => {
               </div>
               <div className='form-group'>
                 <label className='text-muted'>Genero</label>
-                <input
-                  onChange={handleChange('genero')}
+                <select onChange={handleChange('genero')}
                   type='text'
                   className='form-control'
-                  value={genero}
-                />
+                  >
+                    <option value="">Seleccione un genero</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Femenino">Femenino</option>
+                  </select>
               </div>
               <div className='form-group'>
                 <label className='text-muted'>especie</label>
@@ -141,13 +145,34 @@ const AddPets = () => {
                   value={edad}
                 />
               </div>
+              <div className='form-group'>
+        <label className='text-muted'>Descripcion</label>
+        <textarea
+          onChange={handleChange('description')}
+          cols = "50"
+          rows = "5"
+          className='form-control'
+          value={description}
+        />
+      </div>
+              <div className='form-group'>
+                <label className='text-muted'>Propietario</label>
+                <select className = 'form-control' 
+                type = 'text' 
+                onChange={handleChange('nameOwner')}>
+                      <option >Seleccione el Propietario</option>
+                      <option value={user.name}>{user.name}</option>
+                </select>
+              </div>        
               <button className='btn btn-outline-primary'>Create Product</button>
             </form>
     )
     const clickSubmit = event => {
         event.preventDefault()
-        formData.set(nameOwner, user.name)
+        
         setValues({ ...values, error: '', loading: true })
+        console.log(values)
+        console.log(formData)
         createPet(user._id, token, formData).then(data => {
           if (data.error) {
             setValues({ ...values, error: data.error })
@@ -160,6 +185,7 @@ const AddPets = () => {
               genero: '',
               nameOwner: '',
               raza: '',
+              description: '',
               loading: false,
               createdPet: data.name
             })
@@ -180,3 +206,4 @@ return(
 )
 }
 export default AddPets
+

@@ -2,6 +2,7 @@ const Pets = require('../models/Pets')
 const formidable = require('formidable')
 const _ = require('lodash')
 const fs = require('fs')
+const User = require('../models/User')
 
 
 exports.verMas = (req, res) => {
@@ -10,6 +11,7 @@ exports.verMas = (req, res) => {
 }
 
 exports.createPets = (req, res) => {
+    const user = User.findById(req.userId)
     let form = new formidable.IncomingForm()
     form.keepExtensions = true
     form.parse(req, (err, fields, files) => {
@@ -17,6 +19,9 @@ exports.createPets = (req, res) => {
             console.error(err)
         }
         const { name, edad, especie,genero, raza, nameOwner} = fields
+        console.log(fields)
+        console.log(req.body)
+        console.log(user.name)
         let pets = new Pets(fields)
         if(files.foto) {
             if(files.foto > 1000000){
@@ -24,8 +29,10 @@ exports.createPets = (req, res) => {
 
             }
             pets.foto.data = fs.readFileSync(files.foto.path)
-            pets.foto.contentType = files.foto.type    
-        } 
+            pets.foto.contentType = files.foto.type
+                
+        }
+        console.log(pets) 
         pets.save((err, result) => {
             if (err) {
                 res.json({status: "Algo ocurrio, el proceso fallo"})

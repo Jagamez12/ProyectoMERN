@@ -4,22 +4,6 @@ const Pets = require('../models/Pets')
 const token = require('./AuthToken')
 
 exports.Adopted = async(req, res) => {
-    /*const {
-        namePet,
-        edadPet,
-        especie,
-        genero,
-        raza,
-        nameUser,
-        nameOwner} = req.body*/
-    /*const  adopted = new Adopted({
-        namePet,
-        edadPet,
-        especie,
-        genero,
-        raza,
-        nameUser,
-        nameOwner})*/
     console.log(req.body)    
     const adopted = new Adopted(req.body)
     await adopted.save()

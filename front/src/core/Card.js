@@ -39,14 +39,3 @@ export default function Cards({pet}) {
           </div>
     )
 }
-/*<div className = "card m-10 card-cont">
-            <div>
-                <h2>{pet.name}</h2>
-                <ShowImage className = "img" item={pet} url="pets"/>
-                <p> {pet.raza} </p>
-                <p> {pet.especie} </p>
-                <Link to = {`/pets/${pet._id}`}>
-                    <button className = "btn btn-success">Ver Mas</button>
-                </Link>
-            </div>
-        </div>*/
