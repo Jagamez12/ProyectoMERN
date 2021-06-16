@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Redirect } from 'react-router'
 import NavBar from '../layout/NavBar'
 import { Adoptar, deletePet, isAuthenticated, read } from './apiCore'
-import './Pets.css'
+import './Pets.css '
 
 
 const Pets = (props) => {
