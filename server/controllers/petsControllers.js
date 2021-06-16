@@ -16,7 +16,7 @@ exports.createPets = (req, res) => {
         if(err){
             console.error(err)
         }
-        const { name, edad, especie,genero, raza } = fields
+        const { name, edad, especie,genero, raza, nameOwner} = fields
         let pets = new Pets(fields)
         if(files.foto) {
             if(files.foto > 1000000){

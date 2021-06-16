@@ -146,7 +146,7 @@ const AddPets = () => {
     )
     const clickSubmit = event => {
         event.preventDefault()
-        formData.set({nameOwner: user.name})
+        formData.set(nameOwner, user.name)
         setValues({ ...values, error: '', loading: true })
         createPet(user._id, token, formData).then(data => {
           if (data.error) {

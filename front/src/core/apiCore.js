@@ -1,5 +1,7 @@
-import { API } from '../config'
+//import { API } from '../config'
 import { Redirect } from 'react-router-dom'
+
+
 
 export const read = (petsId) => {
     return fetch(
@@ -14,16 +16,7 @@ export const read = (petsId) => {
             .catch(err => console.log(err))
     
 }
-export const getPets =() => {
-    return fetch(  
-        `${API}/pets/mascotas`, { method: 'GET'}
-    ) 
-        .then(response => { 
-            console.log(response)
-            return response.json()
-        })
-        .catch(err => console.log(err))
-}
+
 export const signin = user => {
     return fetch('http://localhost:4000/api/users/signin', {
         method: 'POST',
@@ -148,7 +141,7 @@ export const Adoptar = (userId, token, product) => {
 
 }
 export const deletePet = (id) => {
-    return fetch(`http://localhost:4000/api/pets/createPets/${id}`,{ 
+    return fetch(`http://localhost:4000/api/pets/deletePet/${id}`,{ 
         method: 'DELETE',
         headers: {
             Accept: 'application/json',

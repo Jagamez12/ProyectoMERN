@@ -46,6 +46,7 @@ const petSchema = new mongoose.Schema({
     },
     nameOwner: {
         type: String,
+        default: 'Juan'
         
     }
 }, {

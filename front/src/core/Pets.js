@@ -55,9 +55,10 @@ const Pets = (props) => {
 
     
     }
-    const deleteIt = event => {
-        event.preventDefault()
+    const deleteIt = () => {
+        
         deletePet(pets._id)
+        return <Redirect to ="/"/>
         
     }
     useEffect(() => {
@@ -81,7 +82,7 @@ const Pets = (props) => {
                     <h4>{user._id}</h4>
                     <h4>{pets.nameOwner}</h4>
                     <button onClick={() => {adoptar()}}>Adoptar</button>
-                    <button conClick={deleteIt}>Borrar</button>
+                    <button onClick={() => deleteIt()}>Borrar</button>
                     </>
                     
                 }
