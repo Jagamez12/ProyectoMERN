@@ -49,6 +49,7 @@ const Pets = (props) => {
             nameOwner: pets.nameOwner
 
         })
+        console.log(adopt)
         Adoptar(user._id, token, adopt)
 
 
@@ -77,7 +78,7 @@ const Pets = (props) => {
                     <h4>{pets.especie}</h4>
                     <h4>{pets.genero}</h4>
                     <h4>{pets.raza}</h4>
-                    <h4>{user.name}</h4>
+                    <h4>{user._id}</h4>
                     <h4>{pets.nameOwner}</h4>
                     <button onClick={() => {adoptar()}}>Adoptar</button>
                     <button conClick={deleteIt}>Borrar</button>
