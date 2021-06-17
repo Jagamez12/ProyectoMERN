@@ -1,3 +1,66 @@
-.Arriba {
-    margin-top:10px;
+*{
+    margin:0;
+    padding:0;
 }
+
+
+.container-pet {
+    width: 90%;
+    height: 100vh;
+    background-color: #ffffff;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns:repeat(2,1fr);   
+    grid-template-rows: repeat(3,1fr);
+    grid-template-areas:
+        "foto  titulo"
+        "derecha  izquierda"
+        "derecha  izquierda";
+    box-shadow: #dfdfdf ;
+}
+
+.foto-pet {
+    height: 250px;
+    width: 250px;
+    border-radius: 50%;
+    margin-left: 150px;
+    margin-top: 10px;
+    grid-area: foto;
+}
+
+.information-head{
+    grid-area: titulo;
+    padding-top: 50px;
+}
+
+
+
+.information-head-title{
+    padding-top: 10px;
+    text-align: center;
+    font-size: 40px;
+    text-transform: uppercase;
+}
+.information-head-subtitle{
+    text-align: center;
+    font-size: 20px;
+    color:#6c757d;
+}
+
+
+.information-left{
+    margin:10px;
+    grid-area:derecha;
+}
+.title-description{
+    margin: 10px;
+    font-size: 20px;
+    font-weight: bold;
+
+}
+
+.information-right{
+    margin: 10px;
+    grid-area: izquierda;
+}
+

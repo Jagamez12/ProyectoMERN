@@ -34,7 +34,7 @@ const NavBar = ({history}) => {
                         <Link to="/" className="nav-link">Inicio</Link>
                     </NavItem>
                 </ul>
-                <ul className = "navbar-nav navi-ui">
+                <ul className = "navbar-nav navi-ui mover">
                     {
                         !isAuthenticated() && (
                             <>
