@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Redirect } from 'react-router'
 import NavBar from '../layout/NavBar'
 import { Adoptar, deletePet, isAuthenticated, read } from './apiCore'
-import './Pets.css '
+import './Pets.css'
 
 
 const Pets = (props) => {
@@ -87,9 +87,12 @@ const Pets = (props) => {
                         <img src={`http://localhost:4000/api/pets/foto/${pets._id}`} 
                         height = "300px"
                         width = "300px"
-                        style = {{borderRadius: '50%', marginRight: '60px'}}
+                        style = {{borderRadius: '50%', marginRight: '60px', marginTop: '30px'}}
                         alt={pets.name} className="imagenProfile"/>
-                        <h1 style={{ display: 'inline'}}>{pets.name}</h1>
+                        <div>
+                        <h1 style={{ display: 'inline', fontSize: '60px'}}>{pets.name}</h1>
+                        <h3 className = "nameblock">{pets.genero}</h3>
+                        </div>
                     </div>
                     </>
                     

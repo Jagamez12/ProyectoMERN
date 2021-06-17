@@ -1,3 +1,10 @@
 .Arriba {
     margin-top:10px;
+    display: inline-flex;
+}
+
+.nameblock {
+    margin-right: 10px;
+    margin-top: 50px;
+
 }
