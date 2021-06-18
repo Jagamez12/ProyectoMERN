@@ -2,6 +2,7 @@ import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import AddCategory from './core/AddCategory'
 import AddPets from './core/AddPets'
+import Adopciones from './core/Adopciones'
 import Home from './core/Home'
 import Pets from './core/Pets'
 import Profile from './core/Profile'
@@ -21,7 +22,8 @@ const Routes = () => {
                 <Route path="/addCategory" exact component={AddCategory}/>
                 <Route path="/addPets" exact component={AddPets}/>
                 <Route path="/perfil" exact component={Profile}/>
-                
+                <Route path="/adopciones" exact component={Adopciones}/>
+                <Route path="*" exact component={Search}/>
             </Switch>
         </BrowserRouter>
     )

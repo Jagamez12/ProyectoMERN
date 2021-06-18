@@ -1,0 +1,14 @@
+.container2 {
+    display: flex;
+    width: 70%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.adop-peticiones-propias {
+    flex: 0 0 50%;
+
+}
+.adop-peticiones-otras {
+    flex: 0 0 50%;
+}

@@ -34,7 +34,7 @@ const NavBar = ({history}) => {
                         <Link to="/" className="nav-link">Inicio</Link>
                     </NavItem>
                 </ul>
-                <ul className = "navbar-nav navi-ui">
+                <ul className = "navbar-nav navi-ui mover">
                     {
                         !isAuthenticated() && (
                             <>
@@ -61,7 +61,9 @@ const NavBar = ({history}) => {
                                     <Link to="/addCategory" className="nav-link">Añadir Categoria</Link>
                                 </NavItem>
                                 <div className="navto">
-
+                                <NavItem className="nav-link">
+                                    <Link to="/adopciones" className="nav-link">Mis Peticiones</Link>
+                                </NavItem>
                                 <NavItem className="nav-link">
                                     <Link to="/perfil" className="nav-link">Perfil de {user.name}</Link>
                                 </NavItem>

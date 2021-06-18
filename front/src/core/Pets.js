@@ -12,8 +12,8 @@ const Pets = (props) => {
     const [error, setError] = useState(false)
     const [adopt, setAdopt] = useState({
             namePet: '',
+            idPet: '',
             edadPet: '',
-            especie: '',
             genero: '',
             raza: '',
             nameUser: '',
@@ -21,8 +21,9 @@ const Pets = (props) => {
     })
     const {
         namePet,
+        idPet,
         edadPet,
-        especie,
+
         genero,
         raza,
         nameUser,
@@ -34,31 +35,33 @@ const Pets = (props) => {
                 setError(data.error)
             } else {
                 setPets(data)
+                
             }
         })
     }
-    const adoptar = event => {
+
+    const adoptar = () => {
         //event.preventDefault()
-        setAdopt({
+        
+        const formula = {
             namePet: pets.name,
             edadPet: pets.edad,
-            especie: pets.especie,
             genero: pets.genero,
             raza: pets.raza,
             nameUser: user.name,
-            nameOwner: pets.nameOwner
-
-        })
-        console.log(adopt)
-        Adoptar(user._id, token, adopt)
+            nameOwner: pets.nameOwner,
+            idPet: pets._id
+        }
+        Adoptar(user._id, token, formula)
         setAdopt({
             namePet: '',
             edadPet: '',
-            especie: '',
+            
             genero: '',
             raza: '',
             nameUser: '',
-            nameOwner: ''
+            nameOwner: '',
+            idPet: ''
 
         })
 
@@ -73,26 +76,57 @@ const Pets = (props) => {
     useEffect(() => {
         const petsId = props.match.params.petsId
         loadPets(petsId)
+        
     }, [])
 
     return(
         <>
             <NavBar></NavBar>
-            <div className = "container" style={{
-        backgroundColor: 'white', margin: 'auto'}}>
+            <div>
+            
                 {
                     pets &&
                     <>
-                    <div className = "Arriba">
-                        <img src={`http://localhost:4000/api/pets/foto/${pets._id}`} 
-                        height = "300px"
-                        width = "300px"
-                        style = {{borderRadius: '50%', marginRight: '60px', marginTop: '30px'}}
-                        alt={pets.name} className="imagenProfile"/>
-                        <div>
-                        <h1 style={{ display: 'inline', fontSize: '60px'}}>{pets.name}</h1>
-                        <h3 className = "nameblock">{pets.genero}</h3>
+                    <div className = "container container-pet">
+                        <img className="foto-pet" src={`http://localhost:4000/api/pets/foto/${pets._id}`} 
+                        alt={pets.name}/>
+                        <div className="information-head">
+                            <h2 className="information-head-title">{pets.name}</h2>
+                            <h3 className="information-head-subtitle">{pets.raza}</h3>
+                            
                         </div>
+                        <div className="information-left">
+                        <div>
+                            <p className="title-description">Descripción:</p>
+                            <span className="title-description">{pets.description}</span>
+                        </div>
+                        </div>
+                        <div className="information-right">
+                            <p className="title-description">Edad: {pets.edad}</p>
+                            <p className="title-description">Genero: {pets.genero}</p>
+                            <p className="title-description">Nombre del dueño: {pets.nameOwner}</p>
+                            <p className="title-description">Estado: {pets.estado}</p>
+                        </div>
+                        {
+                            pets.nameOwner === user.name &&(
+                                <button onClick={()=> deleteIt()} >Borrar</button>
+                            )
+                        }
+                        {
+                            pets.nameOwner !== user.name &&(
+                                <button onClick={()=> { 
+                                    setAdopt({
+                                        namePet: pets.name,
+                                        edadPet: pets.edad,
+                                        genero: pets.genero,
+                                        raza: pets.raza,
+                                        nameUser: user.name,
+                                        nameOwner: pets.nameOwner,
+                                        idPet: pets._id
+                                    })
+                                    adoptar()}} >Adoptar</button>
+                            )
+                        }
                     </div>
                     </>
                     

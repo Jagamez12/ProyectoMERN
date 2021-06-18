@@ -21,6 +21,10 @@ const userSchema = new mongoose.Schema({
     hashed_password: {
         type: String,
         require: true
+    },
+    genero: {
+        type: String,
+        default: 'Desconodico'
     },    
     salt: String,
     role: { 

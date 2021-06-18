@@ -4,6 +4,7 @@ const Pets = require('../models/Pets')
 const token = require('./AuthToken')
 
 exports.Adopted = async(req, res) => {
+
     console.log(req.body)    
     const adopted = new Adopted(req.body)
     await adopted.save()
@@ -24,7 +25,7 @@ exports.AdoptedPetByUser = async (req, res, next) => {
     }
     const namePet = pet.name;
     const edadPet = pet.edad;
-    const especie = pet.especie;
+    
     const genero = pet.genero;
     const raza = pet.raza;
     const nameUser = USER.name;
@@ -34,13 +35,13 @@ exports.AdoptedPetByUser = async (req, res, next) => {
     const adopted = new Adopted({
       namePet,
       edadPet,
-      especie,
       genero,
       raza,
       nameUser,
       nameOwner,
     });
-  
+    console.log(adopted);
+    console.log(USER.name)
     try {
       await adopted.save();
       res.json({ adopted });
@@ -61,4 +62,9 @@ exports.getAdopted = async(req, res) => {
         }
         res.json(data)
     })
+}
+exports.changeStatus = async(req, res) => {
+    console.log(req.body)
+    await Pets.findByIdAndUpdate(req.params.id, req.body)
+    res.json({status: 'Actualizado'})
 }

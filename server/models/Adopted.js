@@ -11,11 +11,7 @@ const AdoptedPet = new mongoose.Schema({
     type: Number,
     require: true,
   },
-  especie: {
-    type: ObjectId,
-    ref: "Category",
-    require: true,
-  },
+  
   genero: {
     type: String,
     require: true,
@@ -34,6 +30,9 @@ const AdoptedPet = new mongoose.Schema({
     require: true,
     
   },
+  idPet: {
+    type: String
+  }
 });
 
 module.exports = mongoose.model("Adopted", AdoptedPet);
